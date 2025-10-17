@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
 {
-    public Rigidbody rb;
     public float sensitivity;
+
+    private float xRotation;
+    private float yRotation;
 
     private void Start()
     {
@@ -14,19 +16,13 @@ public class PlayerLook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float inputX = Input.GetAxisRaw("Mouse X") * sensitivity;
+        float inputY = Input.GetAxisRaw("Mouse Y") * sensitivity;
 
-        //if (Input.GetKeyDown(KeyCode.D))
-        //{
-        //    transform.Rotate(new Vector3(0, 1, 0) * sensitivity);
-        //}
+        yRotation += inputX;
+        xRotation -= inputY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    transform.Rotate(new Vector3(0, -1, 0) * sensitivity);
-        //}
-        float inputX = Input.GetAxis("Mouse X") * sensitivity;
-        float inputY = Input.GetAxis("Mouse Y") * sensitivity;
-
-        transform.Rotate(Vector3.up * inputX);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 }
