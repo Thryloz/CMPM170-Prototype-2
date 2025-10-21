@@ -5,8 +5,17 @@ public class Car : MonoBehaviour
     public float lifetime = 5f;
     public GameObject explosion;
     public GameObject model;
+    public GameObject cam;
+
+    private CameraShake cameraShake;
 
     private float timer;
+
+    private void Awake()
+    {
+        cam = GameObject.FindWithTag("MainCamera");
+        cameraShake = cam.GetComponent<CameraShake>();
+    }
 
     private void Start()
     {
@@ -32,6 +41,8 @@ public class Car : MonoBehaviour
         model.SetActive(false);
 
         explosion.SetActive(true);
+
+        StartCoroutine(cameraShake.Shake());
 
         Destroy(gameObject, 1f);
     }
