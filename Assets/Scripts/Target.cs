@@ -1,16 +1,14 @@
+using System;
 using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static event Action OnTargetDestroy;
 
-    // Update is called once per frame
-    void Update()
+
+    public void DestroyTarget()
     {
-        
+        OnTargetDestroy?.Invoke();
+        Destroy(gameObject);
     }
 }

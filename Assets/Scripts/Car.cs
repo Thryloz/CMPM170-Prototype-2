@@ -7,14 +7,18 @@ public class Car : MonoBehaviour
     public GameObject explosion;
     public GameObject model;
     public GameObject cam;
+    public LayerMask targetLayer;
 
     private CameraShake cameraShake;
+    private Rigidbody rb;
+
+    private bool hasCheckedAOE = false;
 
     private float timer;
-
     private void Awake()
     {
         cam = GameObject.FindWithTag("MainCamera");
+        rb = GetComponent<Rigidbody>();
         cameraShake = cam.GetComponent<CameraShake>();
     }
 
@@ -40,8 +44,15 @@ public class Car : MonoBehaviour
     private void Explode()
     {
         model.SetActive(false);
-
         explosion.SetActive(true);
+
+        rb.velocity = Vector3.zero;
+
+        if (!hasCheckedAOE)
+        {
+            CheckForTargets();
+            hasCheckedAOE=true;
+        }
 
         StartCoroutine(cameraShake.Shake());
 
@@ -50,13 +61,11 @@ public class Car : MonoBehaviour
 
     private void CheckForTargets()
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, targetLayer);
         foreach (Collider c in colliders)
         {
-            if (c.gameObject.name == "Target")
-            {
-                // call target destroy function
-            }
+            Debug.Log(c.gameObject.name);
+            c.GetComponent<Target>()?.DestroyTarget();
         }
     }
 
