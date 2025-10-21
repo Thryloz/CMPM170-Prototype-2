@@ -3,6 +3,7 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     public float lifetime = 5f;
+    public float explosionRadius = 4f;
     public GameObject explosion;
     public GameObject model;
     public GameObject cam;
@@ -45,6 +46,24 @@ public class Car : MonoBehaviour
         StartCoroutine(cameraShake.Shake());
 
         Destroy(gameObject, 1f);
+    }
+
+    private void CheckForTargets()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider c in colliders)
+        {
+            if (c.gameObject.name == "Target")
+            {
+                // call target destroy function
+            }
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 
 }
