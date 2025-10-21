@@ -99,6 +99,7 @@ MonoBehaviour:
   lifetime: 5
   explosion: {fileID: 6564450505601131662}
   model: {fileID: 7117044535976536107}
+  cam: {fileID: 0}
 --- !u!1 &2459001831099432802
 GameObject:
   m_ObjectHideFlags: 0
@@ -6003,7 +6004,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationX:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -6056,7 +6057,7 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotationY:
       serializedVersion: 2
-      minMaxState: 0
+      minMaxState: 3
       scalar: 0
       minScalar: 0
       maxCurve:
@@ -6109,8 +6110,8 @@ ParticleSystem:
         m_RotationOrder: 4
     startRotation:
       serializedVersion: 2
-      minMaxState: 0
-      scalar: 0
+      minMaxState: 3
+      scalar: 6.283185
       minScalar: 0
       maxCurve:
         serializedVersion: 2
