@@ -1,7 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Car : MonoBehaviour
 {
+    public static event Action OnCarMiss;
+
+
     public float lifetime = 5f;
     public float explosionRadius = 4f;
     public GameObject explosion;
@@ -62,9 +66,14 @@ public class Car : MonoBehaviour
     private void CheckForTargets()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius, targetLayer);
+
+        if (colliders.Length == 0)
+        {
+            OnCarMiss?.Invoke();
+        }
+
         foreach (Collider c in colliders)
         {
-            Debug.Log(c.gameObject.name);
             c.GetComponent<Target>()?.DestroyTarget();
         }
     }
