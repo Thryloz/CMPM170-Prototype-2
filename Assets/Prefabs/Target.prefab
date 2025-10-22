@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2013072042615290707}
   - component: {fileID: 7167317607384250128}
   - component: {fileID: 2986579093258032002}
-  - component: {fileID: 2124456202034898464}
+  - component: {fileID: -5269692159400915303}
   m_Layer: 0
   m_Name: Target
   m_TagString: Untagged
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2124456202034898464
+--- !u!114 &-5269692159400915303
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,7 +146,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7644373ff16f4eb789c623e9f7376a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  direction: {x: 1, y: 0, z: 0}
-  maxLifetime: 10
-  offscreenPadding: 0.15
+  speed: 3
