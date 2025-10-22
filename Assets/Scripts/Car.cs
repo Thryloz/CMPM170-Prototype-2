@@ -7,7 +7,7 @@ public class Car : MonoBehaviour
 
 
     public float lifetime = 5f;
-    public float explosionRadius = 4f;
+    public float explosionRadius = 10f;
     public GameObject explosion;
     public GameObject model;
     public GameObject cam;

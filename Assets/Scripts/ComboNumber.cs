@@ -4,9 +4,11 @@ using UnityEngine;
 public class ComboNumber : MonoBehaviour
 {
     public TextMeshProUGUI text;
+    public TextMeshProUGUI highestComboText;
 
     private int comboCount = 0;
 
+    private int highestCombo = 0;
     private void Start()
     {
         comboCount = 0;
@@ -29,6 +31,12 @@ public class ComboNumber : MonoBehaviour
     {
         comboCount++;
         text.SetText(comboCount.ToString());
+
+        if (comboCount > highestCombo)
+        {
+            highestCombo = comboCount;
+            highestComboText.SetText(highestCombo.ToString());
+        }
     }
 
     private void ResetCombo()
