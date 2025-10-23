@@ -1,4 +1,5 @@
 using System;
+using System.Xml;
 using UnityEngine;
 
 public class Car : MonoBehaviour
@@ -29,20 +30,17 @@ public class Car : MonoBehaviour
     private void Start()
     {
         explosion.SetActive(false);
+        Destroy(gameObject, lifetime);
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
-        if (timer > lifetime)
-        {
-            //Explode();
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-     //   Explode();
+        Explode();
     }
 
     private void Explode()
@@ -52,13 +50,7 @@ public class Car : MonoBehaviour
 
         rb.velocity = Vector3.zero;
 
-        if (!hasCheckedAOE)
-        {
-            CheckForTargets();
-            hasCheckedAOE = true;
-        }
-
-        StartCoroutine(cameraShake.Shake());
+        //StartCoroutine(cameraShake.Shake());
 
         Destroy(gameObject, 1f);
     }
@@ -81,10 +73,10 @@ public class Car : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    //}
 
 }
