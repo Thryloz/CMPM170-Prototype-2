@@ -60,6 +60,7 @@ public class Car : MonoBehaviour
 
         StartCoroutine(cameraShake.Shake());
 
+        GetComponent<AudioSource>().Play();
         Destroy(gameObject, 1f);
     }
 
