@@ -29,6 +29,9 @@ public class Planet : MonoBehaviour
     {
         timer += Time.deltaTime;
 
+        transform.LookAt(player.transform.position);
+        transform.Rotate(Vector3.up * 90);
+
         if (timer > addForceInterval)
         {
             rb.AddForce(direction * speed);
