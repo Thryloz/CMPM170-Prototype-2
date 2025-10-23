@@ -36,13 +36,13 @@ public class Car : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > lifetime)
         {
-            Explode();
+            //Explode();
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Explode();
+     //   Explode();
     }
 
     private void Explode()
